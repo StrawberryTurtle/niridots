@@ -85,5 +85,5 @@
             "default": ["奄 ", "奔 ", "墳 "]
         },
         "on-click": "pavucontrol"
-    },
+    }
 }
