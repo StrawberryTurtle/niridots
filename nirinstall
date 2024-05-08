@@ -1,0 +1,119 @@
+# Cannot be run as root
+if [ "$(id -u)" = 0 ]; then
+    echo "Cannot be run as root."
+    exit 1
+fi
+
+# Define packages
+dependencias=(base-devel rustup pacman-contrib \
+			  bspwm polybar sxhkd dunst rofi lsd nano \
+			  git maim xdotool xdg-user-dirs lxsession-gtk3 picom\
+			  xorg-xkill xorg-xsetroot xorg-xwininfo xorg-xrandr xorg-xinit xorg-server \
+			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata \
+        noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
+			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting \
+        bluez bluez-utils blueman \
+			  pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack pulsemixer pavucontrol \
+			  networkmanager network-manager-applet \
+			  lxappearance papirus-icon-theme xcolor arandr brightnessctl xclip imagemagick \
+			  nemo nemo-terminal ntfs-3g viewnior neofetch nemo-filer nemo-fileroller \
+			  audacity kitty spotify-launcher physlock ibus-anthy htop gparted kdenlive gimp )
+
+is_installed() {
+  pacman -Qi "$1" &> /dev/null
+  return $?
+}
+
+for paquete in "${dependencias[@]}"
+do
+  if ! is_installed "$paquete"; then
+    sudo pacman -S "$paquete" --noconfirm
+    printf "\n"
+  else
+    sleep 1
+  fi
+done
+sleep 3
+clear
+
+# Preparing Folders
+if [ ! -e $HOME/.config/user-dirs.dirs ]; then
+	xdg-user-dirs-update
+	echo "Creating xdg-user-dirs"
+else
+	echo "user-dirs.dirs already exists"
+fi
+sleep 2 
+clear
+
+# Cloning Rice
+cd
+git clone --depth=1 https://github.com/StrawberryTurtle/mydots.git
+sleep 2
+clear
+
+
+# Copy Rice
+[ ! -d ~/.config ] && mkdir -p ~/.config
+[ ! -d ~/.local/share/fonts ] && mkdir -p ~/.local/share/fonts
+
+for archivos in ~/mydots/config/*; do
+  cp -R "${archivos}" ~/.config/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s folder copied succesfully!%s\n"
+	sleep 1
+  else
+	printf "%s%s%s failed to copy config%s\n"
+	sleep 1
+  fi
+done
+
+for archivos in ~/mydots/fonts/*; do
+  cp -R "${archivos}" ~/.local/share/fonts/
+  if [ $? -eq 0 ]; then
+    printf "%s%s%s copied succesfully!%s\n"
+    sleep 1
+  else
+    printf "%s%s%s failed to copy fonts%s\n"
+    sleep 1
+  fi
+done
+
+cp -f "$HOME"/mydots/home/.zshrc "$HOME"
+cp -f "$HOME"/mydots/home/.xinitrc "$HOME"
+cp -f "$HOME"/mydots/home/.bashrc "$HOME"
+cp -f "$HOME"/mydots/home/.gtkrc-2.0 "$HOME"
+fc-cache -rv >/dev/null 2>&1
+printf "%s%sFiles copied succesfully!!%s\n"
+sleep 3
+
+# Install Paru
+if ! command -v paru >/dev/null 2>&1; then
+	printf "%s%sInstalling paru%s\n"
+	cd
+	git clone https://aur.archlinux.org/paru-bin.git
+	cd paru-bin
+	makepkg -si --noconfirm
+	cd
+else
+	printf "%s%sParu is already installed%s\n"
+fi
+
+# Random Packages
+paru -S catppuccin-gtk-theme-mocha --skipreview --noconfirm
+paru -S catppuccin-cursors-mocha --skipreview --noconfirm
+paru -S ksuperkey --skipreview --noconfirm
+paru -S lorien-bin --skipreview --noconfirm
+paru -S visual-studio-code-bin --skipreview --noconfirm
+paru -S waterfox-bin --skipreview --noconfirm
+paru -S vesktop-bin --skipreview --noconfirm
+
+#Change shell to zsh
+printf "%s%sIf your shell is not zsh will be changed now.\nYour root password is needed to make the change.\n\nAfter that is important for you to reboot.\n %s\n"
+if [[ $SHELL != "/usr/bin/zsh" ]]; then
+  echo "Changing shell to zsh, your root pass is needed."
+  chsh -s /usr/bin/zsh
+else
+  printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n"
+  zsh
+fi

@@ -1,0 +1,89 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 25, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 8, // Gaps between modules (4px)
+    
+    // Choose the order of the modules
+    "modules-left": [ "cpu", "memory", "network"],
+    "modules-center": [],
+    "modules-right": [ "backlight", "wireplumber", "clock", "battery", "tray" ],
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    
+    "tray": {
+        //"icon-size": 12,
+        "spacing": 6
+    },
+    
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "format": "   {:%H:%M | %B %d, %Y}"
+    },
+    
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+    
+    "memory": {
+        "format": "  {used} GiB"
+    },
+    
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon}  {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    
+    "backlight": {
+        "device": "amdgpu_bl1",
+        "format": "{icon}  {percent}%",
+        "format-icons": ["", "", "", ""]
+    },
+    
+    "battery": {
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "直  {essid} [ {bandwidthDownBytes} | {bandwidthUpBytes} ]",
+        "format-ethernet": "   [ {bandwidthDownBytes} | {bandwidthUpBytes} ]",
+        "tooltip-format": "   {ifname} via {gwaddr}",
+        "format-linked": "   {ifname} (No IP)",
+        "format-disconnected": "睊  Disconnected",
+        "format-alt": "{ifname} | {ipaddr} | {cidr}"
+    },
+    
+    "wireplumber": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}{volume}%",
+        "format-muted": "婢 Muted",
+        "format-icons": {
+            "default": ["奄 ", "奔 ", "墳 "]
+        },
+        "on-click": "pavucontrol"
+    },
+}
