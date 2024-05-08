@@ -187,7 +187,6 @@ layout {
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
 
-spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
 spawn-at-startup "ibus" "start"
 spawn-at-startup "lxpolkit"
