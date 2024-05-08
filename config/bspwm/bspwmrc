@@ -7,7 +7,6 @@ bspc config window_gap 0
 bspc config split_ratio 0.5
 bspc config focused_border_color "#cba6f7"
 
+bspc config focus_follows_pointer true
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
-ksuperkey -e 'Super_L=Alt_L|F1'
-ksuperkey -e 'Super_R=Alt_L|F1'
 xsetroot -cursor_name left_ptr
