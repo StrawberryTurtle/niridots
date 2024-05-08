@@ -35,43 +35,6 @@ done
 sleep 3
 clear
 
-# Preparing Folders
-if [ ! -e ~/.config/user-dirs.dirs ]; then
-	xdg-user-dirs-update
-	echo "Creating xdg-user-dirs"
-else
-	echo "user-dirs.dirs already exists"
-fi
-sleep 2 
-clear
-
-# Cloning Rice
-cd
-git clone --depth=1 https://github.com/StrawberryTurtle/niridots.git
-sleep 2
-clear
-
-# Copy Rice
-[ ! -d ~/.config ] && mkdir -p ~/.config
-mkdir -p ~/.config/systemd/user/niri.service.wants
-
-for archivos in ~/niridots/config/*; do
-  cp -R "${archivos}" ~/.config/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s folder copied succesfully!%s\n"
-	sleep 1
-  else
-	printf "%s%s%s failed to copy config%s\n"
-	sleep 1
-  fi
-done
-
-cp -f ~/niridots/.zshrc ~
-cp -f ~/niridots/.gtkrc-2.0 ~
-
-fc-cache -rv >/dev/null 2>&1
-printf "%s%sFiles copied succesfully!!%s\n"
-sleep 3
 
 # Install Paru
 if ! command -v paru >/dev/null 2>&1; then
@@ -93,10 +56,48 @@ paru -S visual-studio-code-bin --skipreview --noconfirm
 paru -S waterfox-bin --skipreview --noconfirm
 paru -S vesktop-bin --skipreview --noconfirm
 
-systemctl enable ly
-systemctl enable NetworkManager
-systemctl enable bluetooth
+
+# Preparing Folders
+if [ ! -e ~/.config/user-dirs.dirs ]; then
+	xdg-user-dirs-update
+	echo "Creating xdg-user-dirs"
+else
+	echo "user-dirs.dirs already exists"
+fi
+sleep 2 
+clear
+
+# Cloning Rice
+cd
+git clone --depth=1 https://github.com/StrawberryTurtle/niridots.git
+sleep 2
+clear
+
+# Prepare Directory
+mkdir -p ~/.config/systemd/user/niri.service.wants
+
+# Copy Rice
+for archivos in ~/niridots/config/*; do
+  cp -R "${archivos}" ~/.config/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s folder copied succesfully!%s\n"
+	sleep 1
+  else
+	printf "%s%s%s failed to copy config%s\n"
+	sleep 1
+  fi
+done
+
+cp -f ~/niridots/.zshrc ~
+cp -f ~/niridots/.gtkrc-2.0 ~
+
+fc-cache -rv >/dev/null 2>&1
+printf "%s%sFiles copied succesfully!!%s\n"
+sleep 3
+
+systemctl enable ly NetworkManager bluetooth
 ln -s /usr/lib/systemd/user/mako.service ~/.config/systemd/user/niri.service.wants/
+ln -s /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
 
 #Change shell to zsh
 printf "%s%sIf your shell is not zsh will be changed now.\nYour root password is needed to make the change.\n\nAfter that is important for you to reboot.\n %s\n"
