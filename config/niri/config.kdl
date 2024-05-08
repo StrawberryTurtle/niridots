@@ -106,7 +106,7 @@ layout {
     }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.9;}
+    default-column-width { proportion 0.75;}
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
 
