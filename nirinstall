@@ -9,7 +9,7 @@ dependencias=(	base-devel rustup pacman-contrib \
 				noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
 			    bluez bluez-utils blueman networkmanager network-manager-applet\
 			    pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack \
-			    xdg-portal-gnome xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland \
+			    xdg-desktop-portal-gnome xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland \
               	niri waybar wofi lxsession-gtk3 bspwm sxhkd rofi mako \
 			    git nano hyfetch nwg-look qt5ct papirus-icon-theme \
               	pavucontrol kitty physlock htop  ibus-anthy \
