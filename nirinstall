@@ -5,18 +5,17 @@ if [ "$(id -u)" = 0 ]; then
 fi
 
 # Define packages
-dependencias=(	base-devel rustup pacman-contrib \
-				noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
-			    bluez bluez-utils blueman networkmanager network-manager-applet\
-			    pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack \
-				bubblewrap gcr gnome-desktop gnome-desktop-common gnome-keyring seatd xdg-desktop-portal-gnome xdg-desktop-portal-gtk niri \
-			    xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland \
-              	waybar wofi lxsession-gtk3 bspwm sxhkd rofi mako \
-			    git nano hyfetch nwg-look qt5ct papirus-icon-theme \
-              	pavucontrol kitty physlock htop  ibus-anthy \
-			    steam audacity spotify-launcher kdenlive gimp viewnior \
-			    nemo nemo-terminal nemo-filer nemo-fileroller ntfs-3g \
-			    zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting )
+dependencias=(	base-devel rustup pacman-contrib git \
+		noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
+		bluez bluez-utils blueman networkmanager network-manager-applet\
+		pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack \
+		xdg-portal-gnome niri \
+              	waybar wofi lxsession-gtk3 waylock mako \
+		nwg-look qt5ct \
+              	pavucontrol kitty htop ibus-anthy \
+		yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf imagemagick viewnior \
+		neovim kitty hyfetch ibus-anthy htop \
+		zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting )
 
 is_installed() {
   pacman -Qi "$1" &> /dev/null
@@ -36,12 +35,12 @@ sleep 3
 clear
 
 
-# Install Paru
-if ! command -v paru >/dev/null 2>&1; then
-	printf "%s%sInstalling paru%s\n"
+# Install Yay
+if ! command -v yay >/dev/null 2>&1; then
+	printf "%s%sInstalling yay%s\n"
 	cd
-	git clone https://aur.archlinux.org/paru-bin.git
-	cd paru-bin
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
 	makepkg -si --noconfirm
 	cd
 else
@@ -49,13 +48,11 @@ else
 fi
 
 # Random Packages
-paru -S catppuccin-gtk-theme-mocha --skipreview --noconfirm
-paru -S catppuccin-cursors-mocha --skipreview --noconfirm
-paru -S lorien-bin --skipreview --noconfirm
-paru -S visual-studio-code-bin --skipreview --noconfirm
-paru -S waterfox-bin --skipreview --noconfirm
-paru -S vesktop-bin --skipreview --noconfirm
-
+yay -S catppuccin-cursors-mocha --noconfirm
+yay -S lorien-bin --noconfirm
+yay -S zen-browser-bin --noconfirm
+yay -S vesktop --noconfirm
+yay -S tokyonight-gtk-theme-git --noconfirm
 
 # Preparing Folders
 if [ ! -e ~/.config/user-dirs.dirs ]; then
@@ -95,7 +92,7 @@ fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n"
 sleep 3
 
-systemctl enable ly NetworkManager bluetooth
+systemctl enable NetworkManager bluetooth
 ln -s /usr/lib/systemd/user/mako.service ~/.config/systemd/user/niri.service.wants/
 ln -s /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
 
