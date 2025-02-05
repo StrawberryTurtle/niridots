@@ -1,0 +1,8 @@
+configuration {
+ modi: "window,drun,ssh,combi";
+ font: "hack 10";
+ combi-modi: "window,drun,ssh";
+ kb-cancel: "Alt-F1";
+ }
+@theme "Purple"
+
