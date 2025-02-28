@@ -31,12 +31,12 @@
     },
     
     "cpu": {
-        "format": "  {usage}%",
+        "format": "cpu: {usage}%",
         "tooltip": false
     },
     
     "memory": {
-        "format": "  {used} GiB"
+        "format": "mem: {used} GiB"
     },
     
     "temperature": {
@@ -45,13 +45,13 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{icon}  {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["low", "med", "high"]
     },
     
     "backlight": {
         "device": "amdgpu_bl1",
         "format": "{icon}  {percent}%",
-        "format-icons": ["", "", "", ""]
+        "format-icons": ["blow", "bmid", "bhi", "bmax"]
     },
     
     "battery": {
@@ -69,20 +69,20 @@
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "直  {essid} [ {bandwidthDownBytes} | {bandwidthUpBytes} ]",
-        "format-ethernet": "   [ {bandwidthDownBytes} | {bandwidthUpBytes} ]",
-        "tooltip-format": "   {ifname} via {gwaddr}",
-        "format-linked": "   {ifname} (No IP)",
-        "format-disconnected": "睊  Disconnected",
+        "format-wifi": "wifi  {essid} [ {bandwidthDownBytes} | {bandwidthUpBytes} ]",
+        "format-ethernet": "eth   [ {bandwidthDownBytes} | {bandwidthUpBytes} ]",
+        "tooltip-format": "tool   {ifname} via {gwaddr}",
+        "format-linked": "link   {ifname} (No IP)",
+        "format-disconnected": "disc  Disconnected",
         "format-alt": "{ifname} | {ipaddr} | {cidr}"
     },
     
     "wireplumber": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}{volume}%",
-        "format-muted": "婢 Muted",
+        "format-muted": " Muted",
         "format-icons": {
-            "default": ["奄 ", "奔 ", "墳 "]
+            "default": ["low ", "med ", "hi "]
         },
         "on-click": "pavucontrol"
     }
