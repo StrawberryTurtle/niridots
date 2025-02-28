@@ -1,6 +1,6 @@
 
 # Vars
-export VISUAL='nvim'
+export VISUAL='yazi'
 export EDITOR='nvim'
 export TERMINAL='kitty'
 export BROWSER='zen-browser'
