@@ -7,14 +7,12 @@ fi
 # Define packages
 dependencias=(  base-devel rustup pacman-contrib \
                 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
-                bluez bluez-utils blueman networkmanager network-manager-applet brightnessctl \
-                pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack \
-                xdg-desktop-portal-gnome gnome-keyring niri xorg-xhost xwayland-satellite \
-                waybar rofi-wayland lxsession-gtk3 physlock ly mako wl-clipboard \
+                bluez bluez-utils blueman networkmanager network-manager-applet \
+		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly lxsession-gtk3 \
                 nwg-look qt6-wayland glfw-wayland qt6ct \
-                pavucontrol kitty neovim hyfetch htop ibus-anthy gparted git lsd \
+                pavucontrol git lsd zsh neovim htop hyfetch firefox discord \
                 yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf imagemagick viewnior \
-	              zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting )
+		niri )
 
 is_installed() {
   pacman -Qi "$1" &> /dev/null
@@ -47,10 +45,7 @@ else
 fi
 
 # Random Packages
-yay -S catppuccin-cursors-mocha --noconfirm
 yay -S lorien-bin --noconfirm
-yay -S zen-browser-bin --noconfirm
-yay -S vesktop-bin --noconfirm
 yay -S tokyonight-gtk-theme-git --noconfirm
 yay -S tlpui --noconfirm
 
@@ -92,17 +87,3 @@ printf "%s%sFiles copied succesfully!!%s\n"
 sleep 3
 
 systemctl enable NetworkManager bluetooth ly
-ln -s /usr/lib/systemd/user/mako.service ~/.config/systemd/user/niri.service.wants/
-ln -s /usr/lib/systeymd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
-
-xhost +SI:localuser:root
-
-#Change shell to zsh
-printf "%s%sIf your shell is not zsh will be changed now.\nYour root password is needed to make the change.\n\nAfter that is important for you to reboot.\n %s\n"
-if [[ $SHELL != "/usr/bin/zsh" ]]; then
-  echo "Changing shell to zsh, your root pass is needed."
-  chsh -s /usr/bin/zsh
-else
-  printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n"
-  zsh
-fi
