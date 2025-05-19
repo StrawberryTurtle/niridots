@@ -101,6 +101,7 @@ spawn-at-startup "swaybg -i background.jpg"
 
 environment {
     DISPLAY ":0"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 prefer-no-csd
