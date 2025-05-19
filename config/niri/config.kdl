@@ -102,6 +102,9 @@ spawn-at-startup "swaybg -i background.jpg"
 environment {
     DISPLAY ":0"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+    GTK_IM_MODULE=fcitx
+    QT_IM_MODULE=fcitx
+    XMODIFIERS=@im=fcitx
 }
 
 prefer-no-csd
