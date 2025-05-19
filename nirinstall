@@ -7,7 +7,7 @@ fi
 # Define packages
 dependencias=(  base-devel rustup pacman-contrib \
                 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
-                bluez bluez-utils blueman networkmanager network-manager-applet \
+                blueman network-manager-applet \
 		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly lxsession-gtk3 \
                 nwg-look qt6-wayland glfw-wayland qt6ct \
                 pavucontrol git lsd zsh neovim htop hyfetch firefox discord \
