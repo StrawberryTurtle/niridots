@@ -5,10 +5,9 @@ if [ "$(id -u)" = 0 ]; then
 fi
 
 # Define packages
-dependencias=(  base-devel rustup pacman-contrib \
-                noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
+dependencias=(  noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
                 blueman network-manager-applet \
-		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly lxsession-gtk3 \
+		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly lxsession-gtk3 xdg-desktop-portal-gnome \
                 nwg-look qt6-wayland glfw-wayland qt6ct \
                 pavucontrol git lsd zsh neovim htop hyfetch firefox discord \
                 yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf imagemagick viewnior \
