@@ -87,4 +87,6 @@ sleep 3
 
 systemctl enable NetworkManager bluetooth ly
 
+dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
