@@ -87,3 +87,5 @@ printf "%s%sFiles copied succesfully!!%s\n"
 sleep 3
 
 systemctl enable NetworkManager bluetooth ly
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
