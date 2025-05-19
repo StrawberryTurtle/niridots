@@ -9,7 +9,7 @@ dependencias=(  noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra otf-
                 blueman network-manager-applet \
 		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly lxsession-gtk3 xdg-desktop-portal-gnome \
                 nwg-look qt6-wayland glfw-wayland qt6ct \
-                pavucontrol git lsd zsh neovim htop hyfetch firefox discord \
+                pavucontrol git lsd zsh neovim htop hyfetch firefox discord fcitx5-mozc \
                 yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf imagemagick viewnior \
 		niri )
 
