@@ -100,7 +100,7 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     GTK_IM_MODULE "fcitx5"
     QT_IM_MODULE "fcitx5"
-    QT_QPA_PLATFORMTHEME "qt5ct:qt6ct"
+    QT_QPA_PLATFORMTHEME "qt6ct"
 }
 
 prefer-no-csd
