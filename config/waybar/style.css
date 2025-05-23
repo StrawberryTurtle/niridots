@@ -1,0 +1,78 @@
+* {
+  	border: none;
+  	border-radius: 8px;
+  	min-height: 0;
+	min-width: 0;
+  	font-family: JetBrainsMono Nerd Font;
+  	font-size: 16px;
+	animation-timing-function: steps(1);
+	animation-duration: 3.0s;
+}
+
+label.module {
+    	padding: 0 12px;
+    	margin: 0px 4px;
+	color: #cdd6f4;
+}
+
+window#waybar {
+    	background: transparent;
+}
+
+tooltip {
+  	background: #1e1e2e;
+  	border: 1px solid #6969ff;
+}
+tooltip label {
+  	color: white;
+}
+
+#workspaces button {
+	margin: 0px 4px;
+  	background-color: #1e1e2e;
+  	color: #cdd6f4;
+}
+
+#workspaces button.active {
+  	color: #1e1e2e;
+  	background-color: #6969ff;
+}
+
+#workspaces button:hover {
+  	color: #1e1e2e;
+  	background-color: #cdd6f4;
+}
+
+#workspaces button.urgent {
+  	background-color: #f38ba8;
+}
+
+/* Taskbar */
+
+#taskbar {
+	background-color: #303050
+}
+
+#taskbar button {
+    	background-color: #1e1e2e;
+	margin: 4px 4px;
+	padding: 4px 4px;
+}
+
+#taskbar button.active {
+	background-color: #6969ff;
+}
+
+
+
+
+#custom-launcher, #clock, #cpu, #memory, #backlight, #wireplumber, #network, #battery, #custom-power {
+    	background-color: #11111b;
+}
+
+#tray {
+	background-color: #11111b;
+	padding: 0px 8px;
+}
+
+
