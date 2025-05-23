@@ -94,6 +94,7 @@ clear
 
 # Systemd Stuff
 printf "Doing some systemd shenanigans"
+mkdir -p ~/.config/systemd/user/niri.service.wants
 ln -s /usr/lib/systemd/user/mako.service ~/.config/systemd/user/niri.service.wants/
 ln -s /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
 ln -s ~/.config/systemd/user/swaybg.service ~/.config/systemd/user/niri.service.wants/
