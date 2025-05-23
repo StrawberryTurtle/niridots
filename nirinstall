@@ -46,7 +46,10 @@ clear
 
 # Random Packages
 printf "Installing some AUR packages"
-yay -S lorien-bin tokyonight-gtk3-theme-git tlpui librewolf-bin --noconfirm
+yay -S lorien-bin --noconfirm
+yay -S tokyonight-gtk-theme-git --noconfirm
+yay -S tlpui --noconfirm
+yay -S librewolf-bin --noconfirm
 sleep 2
 clear
 
