@@ -1,0 +1,107 @@
+# Cannot be run as root
+if [ "$(id -u)" = 0 ]; then
+    echo "Cannot be run as root."
+    exit 1
+fi
+
+# Define packages
+dependencias=(  noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra otf-font-awesome \
+                blueman network-manager-applet \
+		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly polkit-gnome xdg-desktop-portal-gnome gnome-keyring \
+                nwg-look qt5-wayland qt6-wayland glfw-wayland qt5ct qt6ct \
+                pavucontrol git lsd zsh neovim htop hyfetch discord fcitx5-mozc fcitx5-configtool mission-center \
+                yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf imagemagick viewnior \
+		niri )
+
+is_installed() {
+  pacman -Qi "$1" &> /dev/null
+  return $?
+}
+
+for paquete in "${dependencias[@]}"
+do
+  if ! is_installed "$paquete"; then
+    sudo pacman -S "$paquete" --noconfirm
+    printf "\n"
+  else
+    sleep 1
+  fi
+done
+sleep 2
+clear
+
+# Install Yay
+if ! command -v yay >/dev/null 2>&1; then
+	printf "%s%sInstalling yay%s\n"
+	cd
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si --noconfirm
+	cd
+else
+	printf "%s%sYay is already installed%s\n"
+fi
+sleep 2
+clear
+
+# Random Packages
+printf "Installing some AUR packages"
+yay -S lorien-bin tokyonight-gtk3-theme-git tlpui librewolf-bin --noconfirm
+sleep 2
+clear
+
+# LazyVim cause i do be lazy
+printf "Installing LazyVim"
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+sleep 2
+clear
+
+# Preparing Folders
+if [ ! -e ~/.config/user-dirs.dirs ]; then
+	xdg-user-dirs-update
+	echo "Creating xdg-user-dirs"
+else
+	echo "user-dirs.dirs already exists"
+fi
+sleep 2 
+clear
+
+# Cloning Rice
+cd
+git clone --depth=1 https://github.com/StrawberryTurtle/niridots.git
+sleep 2
+clear
+
+# Copy Rice
+for archivos in ~/niridots/config/*; do
+  cp -R "${archivos}" ~/.config/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s folder copied succesfully!%s\n"
+	sleep 1
+  else
+	printf "%s%s%s failed to copy config%s\n"
+	sleep 1
+  fi
+done
+
+cp -f ~/niridots/.zshrc ~
+
+fc-cache -rv >/dev/null 2>&1
+printf "%s%sFiles copied succesfully!!%s\n"
+sleep 2
+clear
+
+# Systemd Stuff
+printf "Doing some systemd shenanigans"
+ln -s /usr/lib/systemd/user/mako.service ~/.config/systemd/user/niri.service.wants/
+ln -s /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
+ln -s ~/.config/systemd/user/swaybg.service ~/.config/systemd/user/niri.service.wants/
+ln -s ~/.config/systemd/user/swayidle.service ~/.config/systemd/user/niri.service.wants/
+systemctl enable NetworkManager bluetooth ly
+sleep 2
+clear
+
+# S'more theming. ohmyzsh fan here.
+dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
