@@ -10,7 +10,7 @@ dependencias=(  noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra otf-
 		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly \
 		polkit-gnome xdg-desktop-portal-gnome gnome-keyring \
                 ibus-anthy nwg-look glfw-wayland pavucontrol git lsd zsh neovim hyfetch discord mission-center \
-                yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf imagemagick viewnior \
+                yazi ffmpegthumbnailer 7zip jq poppler fd ripgrep fzf imagemagick viewnior \
 		niri )
 
 is_installed() {
