@@ -191,7 +191,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "kitty"; }
-    Mod+Space { spawn "fuzzel"; }
+    Mod+A { spawn "fuzzel"; }
     Super+Escape { spawn "swaylock"; }
 
     Mod+D { spawn "discord"; }
