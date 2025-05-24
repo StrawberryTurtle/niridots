@@ -10,6 +10,10 @@
 ### Though it is fairly minimal as i dont use a lot of different packages very often.
 
 
+## Step 1: Backup your .config
+```mv ~/.config ~/.config.old```
+
+
 ## Step 1: Download the install script
 ```curl https://raw.githubusercontent.com/StrawberryTurtle/niridots/main/nirinstall -o ~/nirinstall```
 
