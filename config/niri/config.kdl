@@ -94,13 +94,14 @@ layout {
 
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "ibus-daemon" "-rxRd"
 
 environment {
     DISPLAY ":0"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
-    GTK_IM_MODULE "fcitx5"
-    QT_IM_MODULE "fcitx5"
-    QT_QPA_PLATFORMTHEME "qt6ct"
+    GTK_IM_MODULE "ibus"
+    QT_IM_MODULE "ibus"
+    QT_QPA_PLATFORMTHEME "Adwaita-dark"
 }
 
 prefer-no-csd
