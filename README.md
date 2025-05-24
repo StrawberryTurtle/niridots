@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/80416a92-91ba-4003-a7f3-c7c6316b8064)
+![image](https://github.com/user-attachments/assets/52e21de9-0a2f-460b-acfa-3963207f5460)
+
 
 
 # Installation Instructions
