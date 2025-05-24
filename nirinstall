@@ -8,7 +8,7 @@ fi
 dependencias=(  noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra otf-font-awesome \
                 blueman network-manager-applet \
 		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly \
-		polkit-gnome xdg-desktop-portal-gnome gnome-keyring \
+		polkit-gnome xdg-desktop-portal-gnome gnome-keyring xdg-utils \
                 ibus-anthy nwg-look glfw-wayland pavucontrol git lsd zsh neovim hyfetch discord mission-center \
                 yazi ffmpegthumbnailer 7zip jq poppler fd ripgrep fzf imagemagick viewnior \
 		niri )
