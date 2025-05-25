@@ -6,8 +6,8 @@
 
 
 ## Step 0: This is meant to be done from a fresh Arch install with pipewire. 
-### It will install everything i want in my entire desktop experience. 
-### Though it is fairly minimal as i dont use a lot of different packages very often.
+It will install everything i want in my entire desktop experience. 
+Though it is fairly minimal as i dont use a lot of different packages very often.
 
 
 ## Step 1: Backup your .config
