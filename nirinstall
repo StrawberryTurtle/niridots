@@ -56,13 +56,6 @@ flatpak install flathub dev.vencord.Vesktop
 sleep 2
 clear
 
-# LazyVim cause i do be lazy
-printf "Installing LazyVim"
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
-sleep 2
-clear
-
 # Preparing Folders
 if [ ! -e ~/.config/user-dirs.dirs ]; then
 	xdg-user-dirs-update
