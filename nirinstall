@@ -1,5 +1,3 @@
-#!bin/bash
-
 # Cannot be run as root
 if [ "$(id -u)" = 0 ]; then
     echo "Cannot be run as root."
