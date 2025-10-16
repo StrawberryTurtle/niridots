@@ -7,11 +7,11 @@ if [ "$(id -u)" = 0 ]; then
 fi
 
 # Define packages
-dependencias=(  noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra otf-font-awesome \
+dependencias=(  gnu-free-fonts otf-font-awesome \
                 blueman network-manager-applet \
-		fuzzel mako waybar kitty swaybg swayidle swaylock xwayland-satellite ly \
-		polkit-gnome xdg-desktop-portal-gnome gnome-keyring xdg-utils \
-                ibus-anthy nwg-look glfw-wayland pavucontrol git lsd zsh neovim hyfetch discord mission-center \
+		fuzzel mako waybar foot swaybg swaylock xwayland-satellite ly \
+		polkit-gnome xdg-desktop-portal-gnome xdg-desktop-portal-gtk gnome-keyring xdg-utils \
+        	ibus-anthy nwg-look glfw-wayland pavucontrol git lsd zsh vim hyfetch mission-center flatpak \
                 yazi ffmpegthumbnailer 7zip jq poppler fd ripgrep fzf imagemagick viewnior \
 		niri )
 
@@ -50,8 +50,11 @@ clear
 printf "Installing some AUR packages"
 yay -S lorien-bin --noconfirm
 yay -S tokyonight-gtk-theme-git --noconfirm
-yay -S tlpui --noconfirm
 yay -S librewolf-bin --noconfirm
+yay -S opentabletdriver --noconfirm
+flatpak install flathub io.github.kolunmi.Bazaar
+flatpak install flathub dev.vencord.Vesktop
+
 sleep 2
 clear
 
