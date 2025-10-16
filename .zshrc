@@ -4,8 +4,8 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export VISUAL='yazi'
-export EDITOR='nvim'
-export TERMINAL='kitty'
+export EDITOR='vim'
+export TERMINAL='foot'
 export BROWSER='librewolf'
 
 # Set name of the theme to load --- if set to "random", it will
