@@ -1,3 +1,5 @@
+[
+
 {
 
 // Style
@@ -149,4 +151,33 @@
         	"format": "󰤆",
         	"tooltip": false
 	}
+},
+
+// Left Bar
+
+{
+
+	"layer": "top",
+	"position": "left",
+    	"width": 36,
+    	"margin-top": 8,
+    	"margin-bottom": 8,
+    	"margin-left": 8,
+    
+    	"modules-center": [
+        	"wlr/taskbar"
+    	],
+
+	"wlr/taskbar": {
+        	"format": "{icon}",
+		"all-outputs": false,
+       	 	"on-click": "activate",
+		"on-middle-click": "close",
+        	//"on-click-right": "",
+        	"icon-theme": "oomox-Tokyonight-moon",
+        	"icon-size": 25,
+        	"tooltip-format": "{title}"
+	}
 }
+
+]
